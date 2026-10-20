@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /tools/
+Disallow: /integrations/
+
+Sitemap: https://konsultan.ventour.co.id/sitemap.xml

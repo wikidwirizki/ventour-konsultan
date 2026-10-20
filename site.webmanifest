@@ -1,0 +1,9 @@
+{
+  "name": "Konsultan Umroh Ventour Travel",
+  "short_name": "Konsultan Ventour",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#FFFFFF",
+  "theme_color": "#F9D423",
+  "icons": [{ "src": "assets/img/favicon-192.png", "sizes": "192x192", "type": "image/png" }]
+}
