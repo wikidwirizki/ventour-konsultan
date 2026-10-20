@@ -47,7 +47,7 @@ python3 -m http.server 8000
 
 | Kunci | Keterangan |
 |---|---|
-| `consultant.name` | Nama konsultan (saat ini placeholder `[Nama Konsultan]`) |
+| `consultant.name` | Nama konsultan (saat ini: Rizki Sabarkhah) |
 | `consultant.whatsapp` | Nomor WA yang **sudah disetujui**, format `628xxxxxxxxxx` |
 | `consultant.photo` | Path foto, mis. `assets/img/konsultan.webp` (4:5, ±800×1000) |
 | `consultant.email`, `instagram`, `area` | Opsional |

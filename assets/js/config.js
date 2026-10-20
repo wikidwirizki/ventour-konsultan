@@ -9,17 +9,17 @@ window.SITE_CONFIG = {
 
   consultant: {
     // Nama konsultan yang tampil di halaman. Ganti placeholder ini.
-    name: "[Nama Konsultan]",
+    name: "Rizki Sabarkhah",
     // Gunakan sebutan peran yang disetujui Ventour.
     role: "Konsultan Umroh Ventour Travel",
     // Kota/area layanan (opsional), mis. "Depok & Jabodetabek".
     area: "",
     // Path foto konsultan (rasio 4:5 disarankan, mis. 800x1000 WebP).
     // Kosongkan untuk menampilkan placeholder.
-    photo: "",
+    photo: "assets/img/konsultan-rizki.webp",
     // Nomor WhatsApp konsultan dalam format internasional TANPA "+" atau spasi,
     // mis. "6281234567890". WAJIB nomor yang sudah disetujui konsultan/Ventour.
-    whatsapp: "",
+    whatsapp: "6285172132108",
     // Email konsultan (opsional).
     email: "",
     // Profil Instagram konsultan (opsional, URL lengkap).

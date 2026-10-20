@@ -33,7 +33,7 @@
       <h1>Kebijakan Privasi</h1>
       <p class="muted">Terakhir diperbarui: 20 Oktober 2026</p>
 
-      <p>Halaman ini dikelola oleh <strong><span data-consultant="name" class="placeholder">[Nama Konsultan]</span></strong>, konsultan umroh Ventour Travel ("kami"). Halaman ini bukan situs resmi korporat Ventour Travel. Kebijakan ini menjelaskan bagaimana kami memperlakukan data yang Anda berikan melalui halaman konsultasi ini.</p>
+      <p>Halaman ini dikelola oleh <strong><span data-consultant="name">Rizki Sabarkhah</span></strong>, konsultan umroh Ventour Travel ("kami"). Halaman ini bukan situs resmi korporat Ventour Travel. Kebijakan ini menjelaskan bagaimana kami memperlakukan data yang Anda berikan melalui halaman konsultasi ini.</p>
 
       <h2>1. Data yang kami kumpulkan</h2>
       <ul>
@@ -62,8 +62,8 @@
       <p>Anda dapat meminta akses, perbaikan, atau penghapusan data Anda, serta menarik persetujuan, dengan menghubungi kami. Kami menghormati hak subjek data sesuai Undang-Undang Nomor 27 Tahun 2022 tentang Pelindungan Data Pribadi.</p>
 
       <h2>6. Kontak</h2>
-      <p>Konsultan: <span data-consultant="name" class="placeholder">[Nama Konsultan]</span><br>
-      WhatsApp: <span id="pp-wa" class="placeholder">[nomor WhatsApp konsultan]</span><br>
+      <p>Konsultan: <span data-consultant="name">Rizki Sabarkhah</span><br>
+      WhatsApp: <span id="pp-wa">+62 851-7213-2108</span><br>
       Penyelenggara perjalanan: Ventour Travel (<a href="https://ventour.co.id/" target="_blank" rel="noopener">ventour.co.id<span class="sr-only">, tab baru</span></a>)</p>
     </div>
   </main>
@@ -85,7 +85,7 @@
     (function () {
       var c = (window.SITE_CONFIG && window.SITE_CONFIG.consultant) || {};
       if (c.name && c.name.indexOf("[") !== 0) document.querySelectorAll('[data-consultant="name"]').forEach(function (el) { el.textContent = c.name; el.classList.remove("placeholder"); });
-      if (c.whatsapp) { var w = document.getElementById("pp-wa"); w.textContent = "+" + c.whatsapp; w.classList.remove("placeholder"); }
+      if (c.whatsapp) { document.getElementById("pp-wa").textContent = "+" + c.whatsapp.replace(/^(\d{2})(\d{3})(\d{4})(\d+)$/, "$1 $2-$3-$4"); }
     })();
   </script>
 </body>
