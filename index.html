@@ -128,9 +128,15 @@
         <div class="hero-copy">
           <h1 id="hero-title">Wujudkan Niat ke Baitullah, Mulai dari Langkah&nbsp;Pertama.</h1>
           <p class="hero-sub">Temukan pilihan paket umroh Ventour Travel yang sesuai dengan kebutuhan, jadwal, dan anggaran Anda. Saya siap membantu Anda memahami pilihan perjalanan sebelum mengambil keputusan.</p>
+          <!-- Diisi dari data paket; tetap tersembunyi bila data tidak tersedia. -->
+          <div class="hero-offer" id="hero-offer" hidden>
+            <p class="offer-label">Paket umroh Ventour mulai</p>
+            <p class="offer-price"><strong id="offer-price"></strong><span>/jamaah</span> <s id="offer-normal"></s></p>
+            <p class="offer-meta" id="offer-meta"></p>
+          </div>
           <div class="hero-ctas">
-            <a class="btn btn-primary btn-lg" href="#konsultasi" data-wa="hero">
-              <svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg> Konsultasi Paket Umroh
+            <a class="btn btn-primary btn-lg" href="#konsultasi" data-wa="hero" id="hero-cta">
+              <svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg> <span id="hero-cta-label">Konsultasi Paket Umroh</span>
             </a>
             <a class="btn btn-ghost-light btn-lg" href="#paket">Lihat Pilihan Paket</a>
           </div>
@@ -141,7 +147,7 @@
         </div>
 
         <aside class="hero-card" aria-labelledby="next-dep-title">
-          <p class="hero-card-kicker" id="next-dep-title">Keberangkatan terdekat</p>
+          <p class="hero-card-kicker" id="next-dep-title">Pilihan hemat lainnya</p>
           <ol class="next-list" id="next-departures"><li class="next-empty">Memuat jadwal...</li></ol>
           <a class="hero-card-link" href="#paket">Lihat semua jadwal</a>
           <p class="hero-card-note" data-updated-note></p>

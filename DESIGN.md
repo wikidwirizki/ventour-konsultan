@@ -35,6 +35,8 @@ Reading this as: landing page konsultasi umroh untuk calon jamaah dari iklan Fac
 
 - Tipografi Plus Jakarta Sans: typeface buatan Indonesia (identitas kota Jakarta), terbaca baik di layar kecil dan terasa lokal bagi audiens.
 - Hero tanpa ornamen tambahan: foto Masjidil Haram sudah membawa nuansa Islami, headline langsung jadi titik fokus.
+- Hook harga di hero (permintaan pemilik untuk awareness): harga paket terendah dari data resmi, kuning besar sebagai satu-satunya angka di layar pertama, dan tombol WA yang menyebut harga itu. Tanpa kata "termurah", tanpa hitung mundur atau urgensi buatan; semua angka dihitung ulang dari data setiap minggu.
+- Tombol WA melayang disembunyikan selama tombol WA hero terlihat, supaya tidak ada dua tombol WA bertumpuk di layar pertama HP.
 - Foto konsultan sebatas dada, ukuran kecil (maks. 320px): cukup untuk mengenali wajah tanpa mendominasi section.
 - Motif identitas: garis kuning pendek di depan label section, diulang di setiap section.
 - Pola bintang delapan di section form: geometri Islami sebagai satu-satunya tekstur halaman, memberi penanda kuat di titik konversi.
