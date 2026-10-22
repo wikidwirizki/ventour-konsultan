@@ -64,7 +64,7 @@ Lengkapi juga placeholder di `kebijakan-privasi.html` (periode retensi data).
 Data paket diperbarui sendiri, tanpa deploy ulang:
 
 1. **GitHub Actions** (`.github/workflows/update-packages.yml`) menjalankan `tools/update_packages.py`
-   setiap hari pukul 05:17 dan 17:17 WIB. Script mengambil tabel paket dari https://ventour.co.id/ dan detail
+   sekali sehari pukul 12:00 WIB. Script mengambil tabel paket dari https://ventour.co.id/ dan detail
    tiap paket dari `venom.ventour.co.id/jamaah/detail_paket?id=...`.
 2. Kalau ada perubahan, workflow meng-commit `data/packages.json` dan `assets/js/packages.js` dengan pesan
    `[skip netlify]`, lalu membersihkan cache jsDelivr. Commit ini tidak memicu deploy Netlify, jadi tidak

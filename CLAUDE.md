@@ -3,6 +3,12 @@
 Situs statis (HTML/CSS/JS tanpa build). Konfigurasi di `assets/js/config.js`, data paket di `assets/js/packages.js`
 (dihasilkan oleh `tools/update_packages.py`, jangan diedit manual). Arah desain ada di `DESIGN.md`.
 
+## Deploy (wajib dipatuhi)
+Setiap push ke `main` memicu deploy production Netlify, dan paket Free hanya cukup untuk sekitar 20 deploy per bulan.
+- Jangan memicu deploy Netlify tanpa konfirmasi eksplisit dari pemilik (Rizki).
+- Perubahan situs dikerjakan di branch terpisah, lalu digabung ke `main` hanya setelah pemilik menyetujui deploy.
+- Commit ke `main` yang tidak perlu tayang (workflow, dokumentasi, data otomatis) wajib memuat `[skip netlify]` di pesan commit.
+
 <!-- antislop:start -->
 ## antislop
 For UI, copy, people, mobile layout, or code comments work, read `.claude/skills/antislop/SKILL.md` (core) and then the skill for the task:

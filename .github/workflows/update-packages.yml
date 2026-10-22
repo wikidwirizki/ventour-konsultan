@@ -2,8 +2,8 @@ name: Perbarui data paket
 
 on:
   schedule:
-    # 05:17 dan 17:17 WIB (UTC+7). Menit ganjil menghindari antrean jadwal GitHub di menit 00.
-    - cron: "17 22,10 * * *"
+    # Setiap hari 12:00 WIB (05:00 UTC). GitHub kadang menjalankan jadwal beberapa menit terlambat.
+    - cron: "0 5 * * *"
   workflow_dispatch:
 
 permissions:
