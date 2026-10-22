@@ -61,19 +61,20 @@ Lengkapi juga placeholder di `kebijakan-privasi.html` (periode retensi data).
 
 ## Data paket otomatis
 
-Data paket diperbarui sendiri, tanpa deploy ulang:
+Data paket diperbarui sendiri seminggu sekali:
 
 1. **GitHub Actions** (`.github/workflows/update-packages.yml`) menjalankan `tools/update_packages.py`
-   sekali sehari pukul 12:00 WIB. Script mengambil tabel paket dari https://ventour.co.id/ dan detail
+   setiap **Senin pukul 12:00 WIB**. Script mengambil tabel paket dari https://ventour.co.id/ dan detail
    tiap paket dari `venom.ventour.co.id/jamaah/detail_paket?id=...`.
-2. Kalau ada perubahan, workflow meng-commit `data/packages.json` dan `assets/js/packages.js` dengan pesan
-   `[skip netlify]`, lalu membersihkan cache jsDelivr. Commit ini tidak memicu deploy Netlify, jadi tidak
-   memakan kuota deploy paket Free.
+2. Kalau ada perubahan, workflow meng-commit `data/packages.json` dan `assets/js/packages.js` ke `main`.
+   Commit ini memicu **satu deploy Netlify** (15 kredit, sekitar 60 sampai 75 kredit per bulan dari kuota 300),
+   lalu cache jsDelivr dibersihkan. Kalau data tidak berubah, tidak ada commit dan tidak ada deploy.
 3. Halaman menampilkan data bawaan (`assets/js/packages.js`) lebih dulu, lalu mengambil
    `data/packages.json` dari CDN jsDelivr (`packagesDataUrl` di `config.js`). Kalau data CDN lebih baru,
    daftar paket diganti tanpa reload. Kalau CDN gagal, data bawaan tetap tampil.
 
-Jalankan manual kapan saja: tab **Actions → Perbarui data paket → Run workflow** di GitHub, atau di komputer:
+Jalankan manual: tab **Actions → Perbarui data paket → Run workflow** di GitHub. Perhatikan bahwa run manual
+yang menemukan perubahan juga memicu satu deploy Netlify. Di komputer (tanpa deploy):
 
 ```bash
 python3 tools/update_packages.py

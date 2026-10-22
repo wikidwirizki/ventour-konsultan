@@ -31,7 +31,7 @@ window.SITE_CONFIG = {
   // di server; calon jamaah langsung diarahkan ke WhatsApp.
   leadEndpoint: "",
 
-  // Data paket terbaru yang diperbarui GitHub Actions setiap hari pukul 12:00 WIB (lewat CDN jsDelivr).
+  // Data paket terbaru yang diperbarui GitHub Actions setiap Senin pukul 12:00 WIB (lewat CDN jsDelivr).
   // Kosong = hanya memakai data bawaan assets/js/packages.js.
   packagesDataUrl: "https://cdn.jsdelivr.net/gh/wikidwirizki/ventour-konsultan@main/data/packages.json",
 

@@ -7,7 +7,9 @@ Situs statis (HTML/CSS/JS tanpa build). Konfigurasi di `assets/js/config.js`, da
 Setiap push ke `main` memicu deploy production Netlify, dan paket Free hanya cukup untuk sekitar 20 deploy per bulan.
 - Jangan memicu deploy Netlify tanpa konfirmasi eksplisit dari pemilik (Rizki).
 - Perubahan situs dikerjakan di branch terpisah, lalu digabung ke `main` hanya setelah pemilik menyetujui deploy.
-- Commit ke `main` yang tidak perlu tayang (workflow, dokumentasi, data otomatis) wajib memuat `[skip netlify]` di pesan commit.
+- Commit ke `main` yang tidak perlu tayang (workflow, dokumentasi) wajib memuat `[skip netlify]` di pesan commit.
+- Satu-satunya deploy otomatis yang disetujui: update data paket mingguan dari GitHub Actions (Senin 12:00 WIB),
+  yang sengaja tidak memakai `[skip netlify]`.
 
 <!-- antislop:start -->
 ## antislop
