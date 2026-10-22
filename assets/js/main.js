@@ -120,7 +120,7 @@
     }
     if (C.photo) {
       var wrap = $("#consultant-photo");
-      wrap.innerHTML = '<img src="' + esc(C.photo) + '" alt="Foto ' + esc(C.name) + '" width="560" height="700" loading="lazy">';
+      wrap.innerHTML = '<img src="' + esc(C.photo) + '" alt="Foto ' + esc(C.name) + '" width="640" height="800" loading="lazy">';
     }
   }
 
