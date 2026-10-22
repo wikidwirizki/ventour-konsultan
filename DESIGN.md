@@ -34,7 +34,8 @@ Reading this as: landing page konsultasi umroh untuk calon jamaah dari iklan Fac
 ## Keputusan dan alasannya (R-31)
 
 - Tipografi Plus Jakarta Sans: typeface buatan Indonesia (identitas kota Jakarta), terbaca baik di layar kecil dan terasa lokal bagi audiens.
-- Kaligrafi talbiyah (Amiri) di hero: satu-satunya ornamen Islami, berisi niat umroh yang relevan, bukan dekorasi acak.
+- Hero tanpa ornamen tambahan: foto Masjidil Haram sudah membawa nuansa Islami, headline langsung jadi titik fokus.
+- Foto konsultan sebatas dada, ukuran kecil (maks. 320px): cukup untuk mengenali wajah tanpa mendominasi section.
 - Motif identitas: garis kuning pendek di depan label section, diulang di setiap section.
 - Pola bintang delapan di section form: geometri Islami sebagai satu-satunya tekstur halaman, memberi penanda kuat di titik konversi.
 - Foto: dokumentasi resmi Ventour (rombongan jamaah dan Masjidil Haram), karena bukti nyata lebih kuat daripada ilustrasi.
