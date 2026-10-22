@@ -42,7 +42,7 @@
   var LOWER = { DAN: "dan" };
   function prettyName(name) {
     return name.split(/\s+/).map(function (w) {
-      if (KEEP.test(w)) return w.replace(/X$/, "x");
+      if (KEEP.test(w)) return /^\d+X$/.test(w) ? w.toLowerCase() : w;
       if (LOWER[w]) return LOWER[w];
       return w.charAt(0) + w.slice(1).toLowerCase();
     }).join(" ").replace("Fivestarlite", "Five Star Lite").replace(/^Fivestar/, "Five Star");
@@ -260,6 +260,12 @@
         track("contact_whatsapp", { location: "hero_next" });
       }
     });
+
+    // contact_whatsapp untuk tombol ini sudah dicatat bindGeneralWa (data-wa="hero").
+    $("#hero-cta").addEventListener("click", function () {
+      var id = this.getAttribute("data-id");
+      if (id) track("select_package", { package_id: id, location: "hero_offer" });
+    });
   }
 
   function applyData(data) {
@@ -293,17 +299,49 @@
       $$('[data-stat="range"]').forEach(function (el) { el.textContent = monthLabel(monthKey(first)) + " sampai " + monthLabel(monthKey(last)); });
     }
 
-    // Kartu "Keberangkatan terdekat" di hero: tiga jadwal paling awal.
-    var next = PACKAGES.slice().sort(function (a, b) { return a.departDate < b.departDate ? -1 : 1; }).slice(0, 3);
+    // Hook hero: paket berharga terendah di data resmi; tiga berikutnya masuk kartu di sampingnya.
+    var cheapest = PACKAGES.slice().sort(function (a, b) {
+      return a.price - b.price || (a.departDate < b.departDate ? -1 : 1);
+    });
+    renderOffer(cheapest[0]);
+    var next = cheapest.slice(1, 4);
     $("#next-departures").innerHTML = next.length ? next.map(function (p) {
+      var save = p.priceNormal ? '<span class="nd-save">hemat Rp ' + fmtJt(p.priceNormal - p.price) + "</span>" : "";
       return '<li><a href="' + esc(waLink(packageMessage(p))) + '" target="_blank" rel="noopener" data-id="' + esc(p.id) + '">' +
         '<span class="nd-date"><b>' + parseISO(p.departDate).getDate() + "</b>" + MONTHS_SHORT[parseISO(p.departDate).getMonth()] + "</span>" +
         '<span class="nd-body"><span class="nd-name">' + esc(prettyName(p.name)) + "</span>" +
         '<span class="nd-meta">' + (p.days ? p.days + " hari · " : "") + esc(p.airline || "") + "</span></span>" +
-        '<span class="nd-price">Rp ' + fmtJt(p.price) + "</span></a></li>";
+        '<span class="nd-price">Rp ' + fmtJt(p.price) + save + "</span></a></li>";
     }).join("") : '<li class="next-empty">Jadwal belum tersedia. Silakan tanyakan kepada konsultan.</li>';
 
     renderPackages();
+  }
+
+  function renderOffer(p) {
+    var box = $("#hero-offer");
+    var cta = $("#hero-cta");
+    if (!p) {
+      box.hidden = true;
+      $("#hero-cta-label").textContent = "Konsultasi Paket Umroh";
+      cta.href = waLink(generalMessage());
+      cta.removeAttribute("data-id");
+      return;
+    }
+    $("#offer-price").textContent = "Rp " + fmtJt(p.price);
+    var normal = $("#offer-normal");
+    normal.textContent = p.priceNormal ? "Rp " + fmtJt(p.priceNormal) : "";
+    normal.hidden = !p.priceNormal;
+    if (p.priceNormal) normal.setAttribute("aria-label", "Harga normal Rp " + fmtJt(p.priceNormal));
+    $("#offer-meta").innerHTML = [
+      p.program + (p.days ? " " + p.days + " hari" : ""),
+      p.airline,
+      "berangkat " + fmtDate(p.departDate, true),
+      p.dp ? "DP " + p.dp.replace("Jt", "jt") : "",
+    ].filter(Boolean).map(function (s) { return "<span>" + esc(s) + "</span>"; }).join(" · ");
+    box.hidden = false;
+    $("#hero-cta-label").textContent = "Tanya Paket Rp " + fmtJt(p.price);
+    cta.href = waLink(packageMessage(p));
+    cta.setAttribute("data-id", p.id);
   }
 
   // Data bawaan (packages.js) tampil dulu; versi terbaru dari GitHub menggantikannya bila lebih baru.
@@ -477,6 +515,10 @@
           document.body.classList.toggle("lead-in-view", entries[0].isIntersecting);
         }).observe(leadSection);
       }
+      // Selama tombol WA di hero masih terlihat, tombol melayang hanya menumpuk di atasnya.
+      new IntersectionObserver(function (entries) {
+        document.body.classList.toggle("hero-cta-in-view", entries[0].isIntersecting);
+      }).observe($("#hero-cta"));
       var links = $$(".main-nav a[href^='#']");
       var io = new IntersectionObserver(function (entries) {
         entries.forEach(function (en) {
