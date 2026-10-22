@@ -5,7 +5,7 @@
  */
 window.SITE_CONFIG = {
   // URL publik halaman ini (dipakai untuk canonical/OG di JS bila perlu).
-  siteUrl: "https://konsultan.ventour.co.id/",
+  siteUrl: "https://sabarkhah.my.id/",
 
   consultant: {
     // Nama konsultan yang tampil di halaman. Ganti placeholder ini.

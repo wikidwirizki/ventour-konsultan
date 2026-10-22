@@ -117,9 +117,9 @@ Parameter UTM disimpan per sesi dan ikut terkirim bersama data lead.
 
 ## Deploy
 
-Upload seluruh folder ke hosting statis: Netlify, Vercel, Cloudflare Pages, GitHub Pages, atau cPanel `public_html`.
-* Arahkan `404.html` sebagai halaman 404 (Netlify/Cloudflare otomatis).
-* Jika domain akhir **bukan** `konsultan.ventour.co.id`, ganti URL di `index.html` (canonical, og:url, og:image),
+Situs tayang di Netlify (deploy otomatis dari branch `main`) dengan domain utama **https://sabarkhah.my.id/**.
+* `404.html` dipakai Netlify otomatis sebagai halaman 404.
+* Kalau domain berganti, ubah URL di `index.html` (canonical, og:url, og:image),
   `kebijakan-privasi.html`, `robots.txt`, `sitemap.xml`, dan `config.js`.
 * Aktifkan HTTPS dan cache panjang untuk `assets/img/*`.
 

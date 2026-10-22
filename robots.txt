@@ -3,4 +3,4 @@ Allow: /
 Disallow: /tools/
 Disallow: /integrations/
 
-Sitemap: https://konsultan.ventour.co.id/sitemap.xml
+Sitemap: https://sabarkhah.my.id/sitemap.xml
