@@ -125,7 +125,7 @@
   }
 
   var today = new Date(); today.setHours(0, 0, 0, 0);
-  var PACKAGES = (DATA.packages || []).filter(function (p) { return parseISO(p.departDate) >= today; });
+  var PACKAGES = [];
   var state = { program: "", month: "", sort: "date", shown: PAGE_SIZE };
 
   function filtered() {
@@ -193,7 +193,7 @@
   // Tiga kasus kosong dibedakan: data gagal dimuat, tidak ada jadwal mendatang, atau filter terlalu sempit.
   function emptyState() {
     var msg;
-    if (!window.VENTOUR_PACKAGES) {
+    if (!DATA.packages || !DATA.packages.length) {
       msg = "Data paket gagal dimuat. Lihat jadwal lengkap di ventour.co.id, atau tanyakan langsung lewat WhatsApp.";
     } else if (!PACKAGES.length) {
       msg = "Belum ada jadwal mendatang di data halaman ini. Tanyakan jadwal terbaru lewat WhatsApp.";
@@ -220,15 +220,9 @@
     more.textContent = "Tampilkan paket lainnya (" + Math.max(0, list.length - state.shown) + ")";
   }
 
-  function setupPackages() {
-    var programs = ["Friendly", "Proven", "Premium", "Platinum", "Five Star"].filter(function (pr) {
-      return PACKAGES.some(function (p) { return p.program === pr; });
-    });
-    if (PACKAGES.some(function (p) { return p.plus; })) programs.push("Umroh Plus");
+  // Event dipasang sekali; applyData() boleh dipanggil ulang saat data terbaru tiba.
+  function bindPackageEvents() {
     var chips = $("#program-chips");
-    chips.innerHTML = ["Semua"].concat(programs).map(function (pr, i) {
-      return '<button type="button" class="chip" aria-pressed="' + (i === 0) + '" data-program="' + (i === 0 ? "" : esc(pr)) + '">' + esc(pr) + "</button>";
-    }).join("");
     chips.addEventListener("click", function (e) {
       var b = e.target.closest(".chip");
       if (!b) return;
@@ -239,11 +233,7 @@
       track("filter_packages", { program: state.program || "semua" });
     });
 
-    var months = [];
-    PACKAGES.forEach(function (p) { var k = monthKey(p.departDate); if (months.indexOf(k) < 0) months.push(k); });
-    months.sort();
     var sel = $("#filter-month");
-    months.forEach(function (k) { sel.insertAdjacentHTML("beforeend", '<option value="' + k + '">' + monthLabel(k) + "</option>"); });
     sel.addEventListener("change", function () { state.month = sel.value; state.shown = PAGE_SIZE; renderPackages(); });
     $("#filter-sort").addEventListener("change", function (e) { state.sort = e.target.value; renderPackages(); });
     $("#load-more").addEventListener("click", function () { state.shown += PAGE_SIZE; renderPackages(); });
@@ -262,6 +252,36 @@
         track("contact_whatsapp", { location: a.getAttribute("data-wa") });
       }
     });
+
+    $("#next-departures").addEventListener("click", function (e) {
+      var a = e.target.closest("a[data-id]");
+      if (a) {
+        track("select_package", { package_id: a.getAttribute("data-id"), location: "hero_next" });
+        track("contact_whatsapp", { location: "hero_next" });
+      }
+    });
+  }
+
+  function applyData(data) {
+    DATA = data || { packages: [] };
+    PACKAGES = (DATA.packages || []).filter(function (p) { return parseISO(p.departDate) >= today; });
+
+    var programs = ["Friendly", "Proven", "Premium", "Platinum", "Five Star"].filter(function (pr) {
+      return PACKAGES.some(function (p) { return p.program === pr; });
+    });
+    if (PACKAGES.some(function (p) { return p.plus; })) programs.push("Umroh Plus");
+    if (state.program && programs.indexOf(state.program) < 0) state.program = "";
+    $("#program-chips").innerHTML = [""].concat(programs).map(function (pr) {
+      return '<button type="button" class="chip" aria-pressed="' + (pr === state.program) + '" data-program="' + esc(pr) + '">' + esc(pr || "Semua") + "</button>";
+    }).join("");
+
+    var months = [];
+    PACKAGES.forEach(function (p) { var k = monthKey(p.departDate); if (months.indexOf(k) < 0) months.push(k); });
+    months.sort();
+    if (state.month && months.indexOf(state.month) < 0) state.month = "";
+    $("#filter-month").innerHTML = '<option value="">Semua bulan</option>' + months.map(function (k) {
+      return '<option value="' + k + '"' + (k === state.month ? " selected" : "") + ">" + monthLabel(k) + "</option>";
+    }).join("");
 
     var upd = DATA.updatedAt ? fmtDate(DATA.updatedAt) : "tanggal tidak tersedia";
     $$("[data-updated]").forEach(function (el) { el.textContent = upd; });
@@ -282,15 +302,24 @@
         '<span class="nd-meta">' + (p.days ? p.days + " hari · " : "") + esc(p.airline || "") + "</span></span>" +
         '<span class="nd-price">Rp ' + fmtJt(p.price) + "</span></a></li>";
     }).join("") : '<li class="next-empty">Jadwal belum tersedia. Silakan tanyakan kepada konsultan.</li>';
-    $("#next-departures").addEventListener("click", function (e) {
-      var a = e.target.closest("a[data-id]");
-      if (a) {
-        track("select_package", { package_id: a.getAttribute("data-id"), location: "hero_next" });
-        track("contact_whatsapp", { location: "hero_next" });
-      }
-    });
 
     renderPackages();
+  }
+
+  // Data bawaan (packages.js) tampil dulu; versi terbaru dari GitHub menggantikannya bila lebih baru.
+  function loadLatestData() {
+    var url = CFG.packagesDataUrl;
+    if (!url || !window.fetch) return;
+    var ctrl = window.AbortController ? new AbortController() : null;
+    var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 6000);
+    fetch(url, { cache: "no-cache", signal: ctrl ? ctrl.signal : undefined })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (fresh) {
+        var stamp = function (d) { return (d && (d.generatedAt || d.updatedAt)) || ""; };
+        if (fresh && fresh.packages && fresh.packages.length && stamp(fresh) > stamp(DATA)) applyData(fresh);
+      })
+      .catch(function () { /* tetap memakai data bawaan */ })
+      .then(function () { clearTimeout(timer); });
   }
 
   function utm() {
@@ -472,7 +501,9 @@
     var y = $("#year"); if (y) y.textContent = new Date().getFullYear();
     applyConsultant();
     bindGeneralWa();
-    setupPackages();
+    bindPackageEvents();
+    applyData(window.VENTOUR_PACKAGES);
+    loadLatestData();
     setupForm();
     setupNav();
   });

@@ -6,7 +6,10 @@ Sumber:
   - Daftar paket : https://ventour.co.id/  (tabel "Pilihan Paket Umroh Terbaik")
   - Detail paket : https://venom.ventour.co.id/jamaah/detail_paket?id=<ID>
 
-Hasil: assets/js/packages.js (window.VENTOUR_PACKAGES)
+Hasil:
+  - assets/js/packages.js  data bawaan yang ikut ter-deploy (window.VENTOUR_PACKAGES)
+  - data/packages.json     data yang dibaca halaman langsung dari GitHub, diperbarui
+                           otomatis oleh .github/workflows/update-packages.yml
 
 Pemakaian (hanya butuh Python 3 standar, tanpa dependensi):
   python3 tools/update_packages.py
@@ -25,12 +28,16 @@ import re
 import sys
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor
-from datetime import date, datetime
+from datetime import date, datetime, timezone
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 HOME_URL = "https://ventour.co.id/"
 DETAIL_URL = "https://venom.ventour.co.id/jamaah/detail_paket?id={}"
-OUT = Path(__file__).resolve().parent.parent / "assets" / "js" / "packages.js"
+ROOT = Path(__file__).resolve().parent.parent
+OUT = ROOT / "assets" / "js" / "packages.js"
+OUT_JSON = ROOT / "data" / "packages.json"
+WIB = ZoneInfo("Asia/Jakarta")
 UA = "Mozilla/5.0 (compatible; VentourKonsultanBot/1.0; +data-sync)"
 
 MONTHS_ID = {"januari": 1, "februari": 2, "maret": 3, "april": 4, "mei": 5, "juni": 6, "juli": 7,
@@ -207,18 +214,34 @@ def main():
         sys.exit(f"Gagal memperbarui data: {e}. File lama tidak diubah.")
     if not pkgs:
         sys.exit("Tidak ada paket terbaca (struktur situs mungkin berubah). File lama tidak diubah.")
+
+    old = []
+    if OUT_JSON.exists():
+        old = json.loads(OUT_JSON.read_text(encoding="utf-8")).get("packages", [])
+    # Hasil yang anjlok drastis lebih mungkin gangguan situs/parser daripada paket yang benar-benar hilang.
+    if old and len(pkgs) < len(old) * 0.5:
+        sys.exit(f"Hanya {len(pkgs)} paket terbaca (sebelumnya {len(old)}). File lama tidak diubah.")
+    if pkgs == old:
+        print(f"Tidak ada perubahan ({len(pkgs)} paket).")
+        return
+
+    now = datetime.now(timezone.utc)
     payload = {
-        "updatedAt": date.today().isoformat(),
+        "updatedAt": now.astimezone(WIB).date().isoformat(),
+        "generatedAt": now.isoformat(timespec="seconds").replace("+00:00", "Z"),
         "source": HOME_URL,
         "packages": pkgs,
     }
+    text = json.dumps(payload, ensure_ascii=False, indent=1)
+    OUT_JSON.parent.mkdir(exist_ok=True)
+    OUT_JSON.write_text(text + "\n", encoding="utf-8")
     OUT.write_text(
         "/* File ini DIHASILKAN OTOMATIS oleh tools/update_packages.py dari situs resmi Ventour.\n"
         "   Jangan mengubah harga/jadwal secara manual tanpa sumber resmi. */\n"
-        "window.VENTOUR_PACKAGES = " + json.dumps(payload, ensure_ascii=False, indent=1) + ";\n",
+        "window.VENTOUR_PACKAGES = " + text + ";\n",
         encoding="utf-8",
     )
-    print(f"OK: {len(pkgs)} paket ditulis ke {OUT}")
+    print(f"OK: {len(pkgs)} paket ditulis ke {OUT_JSON} dan {OUT}")
 
 
 if __name__ == "__main__":

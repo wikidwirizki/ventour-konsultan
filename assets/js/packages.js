@@ -1,7 +1,8 @@
 /* File ini DIHASILKAN OTOMATIS oleh tools/update_packages.py dari situs resmi Ventour.
    Jangan mengubah harga/jadwal secara manual tanpa sumber resmi. */
 window.VENTOUR_PACKAGES = {
- "updatedAt": "2026-10-20",
+ "updatedAt": "2026-10-22",
+ "generatedAt": "2026-10-22T10:16:45Z",
  "source": "https://ventour.co.id/",
  "packages": [
   {
@@ -44,7 +45,7 @@ window.VENTOUR_PACKAGES = {
     "City Tour Al Ula",
     "City Tour Thaif"
    ],
-   "seatStatus": "5 Tersisa",
+   "seatStatus": "1 Tersisa",
    "detailUrl": "https://venom.ventour.co.id/jamaah/detail_paket?id=1727"
   },
   {
@@ -110,7 +111,7 @@ window.VENTOUR_PACKAGES = {
     "Kereta Cepat",
     "City Tour Thaif"
    ],
-   "seatStatus": "Tersedia",
+   "seatStatus": "20 Tersisa",
    "detailUrl": "https://venom.ventour.co.id/jamaah/detail_paket?id=1729"
   },
   {
@@ -194,7 +195,7 @@ window.VENTOUR_PACKAGES = {
    "priceNormal": 36900000,
    "dp": "Rp 5 Jt",
    "highlights": [],
-   "seatStatus": "18 Tersisa",
+   "seatStatus": "11 Tersisa",
    "detailUrl": "https://venom.ventour.co.id/jamaah/detail_paket?id=1500"
   },
   {
@@ -213,7 +214,7 @@ window.VENTOUR_PACKAGES = {
    "priceNormal": 39900000,
    "dp": "Rp 5 Jt",
    "highlights": [],
-   "seatStatus": "16 Tersisa",
+   "seatStatus": "15 Tersisa",
    "detailUrl": "https://venom.ventour.co.id/jamaah/detail_paket?id=1505"
   },
   {
@@ -301,34 +302,13 @@ window.VENTOUR_PACKAGES = {
    "hotelMadinah": "WINNER INN AL KHAIR",
    "price": 34900000,
    "priceNormal": 37900000,
-   "dp": "Rp 5 Jt",
+   "dp": "Rp 10 Jt",
    "highlights": [
     "City Tour Thaif",
     "Kereta Cepat"
    ],
    "seatStatus": "Tersedia",
    "detailUrl": "https://venom.ventour.co.id/jamaah/detail_paket?id=1672"
-  },
-  {
-   "id": "1511",
-   "name": "PROVEN 9D WY",
-   "program": "Proven",
-   "plus": null,
-   "departDate": "2026-12-02",
-   "returnDate": "2026-12-10",
-   "days": 9,
-   "departCity": null,
-   "airline": "Oman Air",
-   "hotelMakkah": "WINNER INN AJYAD",
-   "hotelMadinah": "ODST",
-   "price": 28400000,
-   "priceNormal": 30900000,
-   "dp": "Rp 5 Jt",
-   "highlights": [
-    "Include Museum Al Amoudi"
-   ],
-   "seatStatus": "1 Tersisa",
-   "detailUrl": "https://venom.ventour.co.id/jamaah/detail_paket?id=1511"
   },
   {
    "id": "1666",
@@ -413,12 +393,12 @@ window.VENTOUR_PACKAGES = {
    "hotelMadinah": "WINNER INN AL KHAIR",
    "price": 37900000,
    "priceNormal": 41900000,
-   "dp": "Rp 3 Jt",
+   "dp": "Rp 5 Jt",
    "highlights": [
     "Kereta Cepat",
     "City Tour Thaif"
    ],
-   "seatStatus": "13 Tersisa",
+   "seatStatus": "16 Tersisa",
    "detailUrl": "https://venom.ventour.co.id/jamaah/detail_paket?id=1664"
   },
   {
@@ -435,14 +415,14 @@ window.VENTOUR_PACKAGES = {
    "hotelMadinah": "AL HARAM HOTEL MADINAH",
    "price": 42900000,
    "priceNormal": 46900000,
-   "dp": "Rp 3 Jt",
+   "dp": "Rp 5 Jt",
    "highlights": [
     "City Tour Thaif",
     "Free Telefric Thaif",
     "Kereta Cepat",
     "Tour Museum Assyafiyah"
    ],
-   "seatStatus": "20 Tersisa",
+   "seatStatus": "Tersedia",
    "detailUrl": "https://venom.ventour.co.id/jamaah/detail_paket?id=1663"
   },
   {
@@ -469,25 +449,25 @@ window.VENTOUR_PACKAGES = {
    "detailUrl": "https://venom.ventour.co.id/jamaah/detail_paket?id=1644"
   },
   {
-   "id": "1520",
-   "name": "FRIENDLY 9D WY",
-   "program": "Friendly",
+   "id": "1536",
+   "name": "PROVEN 9D WY",
+   "program": "Proven",
    "plus": null,
    "departDate": "2026-12-09",
    "returnDate": "2026-12-17",
    "days": 9,
    "departCity": null,
    "airline": "Oman Air",
-   "hotelMakkah": "MAYSAN AL MAQAM",
+   "hotelMakkah": "WINNER INN AJYAD",
    "hotelMadinah": "ODST",
-   "price": 28900000,
-   "priceNormal": 31900000,
+   "price": 27900000,
+   "priceNormal": 30900000,
    "dp": "Rp 3 Jt",
    "highlights": [
-    "Tour Museum Wahyu"
+    "Include Museum Al Amoudi"
    ],
-   "seatStatus": "1 Tersisa",
-   "detailUrl": "https://venom.ventour.co.id/jamaah/detail_paket?id=1520"
+   "seatStatus": "2 Tersisa",
+   "detailUrl": "https://venom.ventour.co.id/jamaah/detail_paket?id=1536"
   },
   {
    "id": "1623",
@@ -621,27 +601,6 @@ window.VENTOUR_PACKAGES = {
    ],
    "seatStatus": "Tersedia",
    "detailUrl": "https://venom.ventour.co.id/jamaah/detail_paket?id=1731"
-  },
-  {
-   "id": "1517",
-   "name": "FRIENDLY 9D WY LANDING MADINAH SPESIAL LIBUR AKHIR TAHUN",
-   "program": "Friendly",
-   "plus": null,
-   "departDate": "2026-12-21",
-   "returnDate": "2026-12-29",
-   "days": 9,
-   "departCity": null,
-   "airline": "Oman Air",
-   "hotelMakkah": "MAYSAN AL MAQAM",
-   "hotelMadinah": "ODST",
-   "price": 32900000,
-   "priceNormal": 34900000,
-   "dp": "Rp 3 Jt",
-   "highlights": [
-    "Free City Tour Thaif"
-   ],
-   "seatStatus": "2 Tersisa",
-   "detailUrl": "https://venom.ventour.co.id/jamaah/detail_paket?id=1517"
   },
   {
    "id": "1448",
@@ -867,7 +826,7 @@ window.VENTOUR_PACKAGES = {
     "Tour Thaif",
     "Kereta Cepat"
    ],
-   "seatStatus": "12 Tersisa",
+   "seatStatus": "6 Tersisa",
    "detailUrl": "https://venom.ventour.co.id/jamaah/detail_paket?id=1679"
   },
   {
@@ -951,7 +910,7 @@ window.VENTOUR_PACKAGES = {
    "highlights": [
     "City Tour Thaif"
    ],
-   "seatStatus": "18 Tersisa",
+   "seatStatus": "16 Tersisa",
    "detailUrl": "https://venom.ventour.co.id/jamaah/detail_paket?id=1683"
   },
   {
@@ -974,7 +933,7 @@ window.VENTOUR_PACKAGES = {
     "Transport Menuju Stadion",
     "Tiket Nonton Timnas"
    ],
-   "seatStatus": "Tersedia",
+   "seatStatus": "19 Tersisa",
    "detailUrl": "https://venom.ventour.co.id/jamaah/detail_paket?id=1767"
   },
   {
@@ -996,7 +955,7 @@ window.VENTOUR_PACKAGES = {
     "City Tour Thaif",
     "Kereta Cepat"
    ],
-   "seatStatus": "17 Tersisa",
+   "seatStatus": "13 Tersisa",
    "detailUrl": "https://venom.ventour.co.id/jamaah/detail_paket?id=1690"
   },
   {
@@ -1020,7 +979,7 @@ window.VENTOUR_PACKAGES = {
     "Tour Museum Assafiyah",
     "Red Sea"
    ],
-   "seatStatus": "Tersedia",
+   "seatStatus": "20 Tersisa",
    "detailUrl": "https://venom.ventour.co.id/jamaah/detail_paket?id=1689"
   },
   {
@@ -1206,7 +1165,7 @@ window.VENTOUR_PACKAGES = {
   },
   {
    "id": "1756",
-   "name": "PROVEN 9DD QR SPECIAL NISFU SYABAN",
+   "name": "PROVEN 9D QR SPECIAL NISFU SYABAN",
    "program": "Proven",
    "plus": null,
    "departDate": "2027-01-23",
@@ -1224,6 +1183,28 @@ window.VENTOUR_PACKAGES = {
    ],
    "seatStatus": "13 Tersisa",
    "detailUrl": "https://venom.ventour.co.id/jamaah/detail_paket?id=1756"
+  },
+  {
+   "id": "1797",
+   "name": "PROVEN PLUS THAIF 10D SV MADINAH FIRST",
+   "program": "Proven",
+   "plus": null,
+   "departDate": "2027-01-23",
+   "returnDate": "2027-02-01",
+   "days": 10,
+   "departCity": null,
+   "airline": "Saudia",
+   "hotelMakkah": "MAYSAN AL MAQAM",
+   "hotelMadinah": "ODST",
+   "price": 32900000,
+   "priceNormal": 35900000,
+   "dp": "Rp 1 Jt",
+   "highlights": [
+    "City Tour Thaif",
+    "Tour Badar"
+   ],
+   "seatStatus": "Tersedia",
+   "detailUrl": "https://venom.ventour.co.id/jamaah/detail_paket?id=1797"
   },
   {
    "id": "1685",
@@ -1358,6 +1339,29 @@ window.VENTOUR_PACKAGES = {
    ],
    "seatStatus": "Tersedia",
    "detailUrl": "https://venom.ventour.co.id/jamaah/detail_paket?id=1763"
+  },
+  {
+   "id": "1798",
+   "name": "FIVESTAR LUXURY 9D SV LANDING JEDDAH OUT MADINAH",
+   "program": "Five Star",
+   "plus": null,
+   "departDate": "2027-01-26",
+   "returnDate": "2027-02-03",
+   "days": 9,
+   "departCity": null,
+   "airline": "Saudia",
+   "hotelMakkah": "MARWA ROTANA",
+   "hotelMadinah": "AL HARAM HOTEL MADINAH",
+   "price": 43900000,
+   "priceNormal": 47900000,
+   "dp": "Rp 1 Jt",
+   "highlights": [
+    "City Tour Thaif Dan Telefric",
+    "Kereta Cepat",
+    "Museum Assafiyah"
+   ],
+   "seatStatus": "Tersedia",
+   "detailUrl": "https://venom.ventour.co.id/jamaah/detail_paket?id=1798"
   },
   {
    "id": "1695",
@@ -1551,7 +1555,7 @@ window.VENTOUR_PACKAGES = {
     "City Tour Thaif",
     "Kereta Cepat"
    ],
-   "seatStatus": "Tersedia",
+   "seatStatus": "17 Tersisa",
    "detailUrl": "https://venom.ventour.co.id/jamaah/detail_paket?id=1703"
   },
   {
@@ -1609,7 +1613,7 @@ window.VENTOUR_PACKAGES = {
    "airline": "Saudia",
    "hotelMakkah": "GRAND AL MASSA",
    "hotelMadinah": "ODST",
-   "price": 33900000,
+   "price": 34900000,
    "priceNormal": 37900000,
    "dp": "Rp 3 Jt",
    "highlights": [
@@ -2084,6 +2088,27 @@ window.VENTOUR_PACKAGES = {
    "detailUrl": "https://venom.ventour.co.id/jamaah/detail_paket?id=1769"
   },
   {
+   "id": "1795",
+   "name": "PROVEN PLUS 9D SV SPESIAL LIBURAN SEKOLAH",
+   "program": "Proven",
+   "plus": null,
+   "departDate": "2027-06-20",
+   "returnDate": "2027-06-28",
+   "days": 9,
+   "departCity": null,
+   "airline": "Saudia",
+   "hotelMakkah": "MAYSAN AL MAQAM",
+   "hotelMadinah": "ODST",
+   "price": 31900000,
+   "priceNormal": 34900000,
+   "dp": "Rp 1 Jt",
+   "highlights": [
+    "Museum Al Wahyu"
+   ],
+   "seatStatus": "Tersedia",
+   "detailUrl": "https://venom.ventour.co.id/jamaah/detail_paket?id=1795"
+  },
+  {
    "id": "1770",
    "name": "PLATINUM 9D SV SPESIAL LIBURAN SEKOLAH",
    "program": "Platinum",
@@ -2129,6 +2154,49 @@ window.VENTOUR_PACKAGES = {
    "detailUrl": "https://venom.ventour.co.id/jamaah/detail_paket?id=1771"
   },
   {
+   "id": "1794",
+   "name": "PROVEN PLUS 9D SV SPESIAL MUSIM 1449H",
+   "program": "Proven",
+   "plus": null,
+   "departDate": "2027-07-08",
+   "returnDate": "2027-07-16",
+   "days": 9,
+   "departCity": null,
+   "airline": "Saudia",
+   "hotelMakkah": "MAYSAN AL MAQAM",
+   "hotelMadinah": "ODST",
+   "price": 31900000,
+   "priceNormal": 34900000,
+   "dp": "Rp 1 Jt",
+   "highlights": [
+    "Museum Al Wahyu"
+   ],
+   "seatStatus": "Tersedia",
+   "detailUrl": "https://venom.ventour.co.id/jamaah/detail_paket?id=1794"
+  },
+  {
+   "id": "1793",
+   "name": "PROVEN PLUS 9D SV SPESIAL MUSIM 1449H START SOLO",
+   "program": "Proven",
+   "plus": null,
+   "departDate": "2027-07-08",
+   "returnDate": "2027-07-16",
+   "days": 9,
+   "departCity": "Solo",
+   "airline": "Saudia",
+   "hotelMakkah": "MAYSAN AL MAQAM",
+   "hotelMadinah": "ODST",
+   "price": 32900000,
+   "priceNormal": 35900000,
+   "dp": "Rp 1 Jt",
+   "highlights": [
+    "Museum Al Wahyu",
+    "Transport Pp Solo - Jakarta"
+   ],
+   "seatStatus": "Tersedia",
+   "detailUrl": "https://venom.ventour.co.id/jamaah/detail_paket?id=1793"
+  },
+  {
    "id": "1773",
    "name": "PLATINUM 9D SV",
    "program": "Platinum",
@@ -2149,6 +2217,49 @@ window.VENTOUR_PACKAGES = {
    ],
    "seatStatus": "Tersedia",
    "detailUrl": "https://venom.ventour.co.id/jamaah/detail_paket?id=1773"
+  },
+  {
+   "id": "1791",
+   "name": "PROVEN PLUS 9D SV SPESIAL MUSIM 1449H",
+   "program": "Proven",
+   "plus": null,
+   "departDate": "2027-08-11",
+   "returnDate": "2027-08-19",
+   "days": 9,
+   "departCity": null,
+   "airline": "Saudia",
+   "hotelMakkah": "MAYSAN AL MAQAM",
+   "hotelMadinah": "ODST",
+   "price": 31900000,
+   "priceNormal": 34900000,
+   "dp": "Rp 1 Jt",
+   "highlights": [
+    "Museum Al Wahyu"
+   ],
+   "seatStatus": "Tersedia",
+   "detailUrl": "https://venom.ventour.co.id/jamaah/detail_paket?id=1791"
+  },
+  {
+   "id": "1792",
+   "name": "PROVEN PLUS 9D SV SPESIAL MUSIM 1449H START SOLO",
+   "program": "Proven",
+   "plus": null,
+   "departDate": "2027-08-11",
+   "returnDate": "2027-08-19",
+   "days": 9,
+   "departCity": "Solo",
+   "airline": "Saudia",
+   "hotelMakkah": "MAYSAN AL MAQAM",
+   "hotelMadinah": "ODST",
+   "price": 32900000,
+   "priceNormal": 35900000,
+   "dp": "Rp 1 Jt",
+   "highlights": [
+    "Museum Al Wahyu",
+    "Transport Pp Solo - Jakarta"
+   ],
+   "seatStatus": "Tersedia",
+   "detailUrl": "https://venom.ventour.co.id/jamaah/detail_paket?id=1792"
   }
  ]
 };

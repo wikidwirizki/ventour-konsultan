@@ -59,19 +59,32 @@ Tidak ada nomor yang ditebak.
 
 Lengkapi juga placeholder di `kebijakan-privasi.html` (periode retensi data).
 
-## Memperbarui data paket
+## Data paket otomatis
+
+Data paket diperbarui sendiri, tanpa deploy ulang:
+
+1. **GitHub Actions** (`.github/workflows/update-packages.yml`) menjalankan `tools/update_packages.py`
+   setiap hari pukul 05:17 dan 17:17 WIB. Script mengambil tabel paket dari https://ventour.co.id/ dan detail
+   tiap paket dari `venom.ventour.co.id/jamaah/detail_paket?id=...`.
+2. Kalau ada perubahan, workflow meng-commit `data/packages.json` dan `assets/js/packages.js` dengan pesan
+   `[skip netlify]`, lalu membersihkan cache jsDelivr. Commit ini tidak memicu deploy Netlify, jadi tidak
+   memakan kuota deploy paket Free.
+3. Halaman menampilkan data bawaan (`assets/js/packages.js`) lebih dulu, lalu mengambil
+   `data/packages.json` dari CDN jsDelivr (`packagesDataUrl` di `config.js`). Kalau data CDN lebih baru,
+   daftar paket diganti tanpa reload. Kalau CDN gagal, data bawaan tetap tampil.
+
+Jalankan manual kapan saja: tab **Actions → Perbarui data paket → Run workflow** di GitHub, atau di komputer:
 
 ```bash
 python3 tools/update_packages.py
 ```
 
-Script mengambil tabel paket dari https://ventour.co.id/ dan detail tiap paket dari
-`venom.ventour.co.id/jamaah/detail_paket?id=…`, lalu menulis `assets/js/packages.js` beserta tanggal
-pembaruannya. Script ini hanya memakai pustaka standar Python. Paket yang tanggalnya sudah lewat otomatis
-disembunyikan di halaman. Program Haji, Badal, Vcation/Halal Tour, dan tabungan dilewati.
-Jika struktur situs resmi berubah dan parsing gagal, file lama **tidak** ditimpa.
+Pengaman: kalau situs resmi gagal diakses, strukturnya berubah, atau jumlah paket anjlok lebih dari separuh,
+file lama **tidak** ditimpa dan workflow tercatat gagal (GitHub mengirim email). Paket yang tanggalnya sudah lewat
+otomatis disembunyikan. Program Haji, Badal, Vcation/Halal Tour, dan tabungan dilewati.
 
-Sarankan jalankan seminggu sekali (atau via cron/GitHub Actions). Harga dan kursi di situs resmi bisa berubah setiap hari.
+Repo ini harus tetap **publik** agar jsDelivr bisa membaca `data/packages.json`. GitHub bisa menonaktifkan jadwal
+workflow di repo publik setelah 60 hari tanpa aktivitas; kalau itu terjadi, aktifkan lagi lewat tab **Actions**.
 
 ## Penyimpanan leads
 

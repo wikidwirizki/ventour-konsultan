@@ -31,6 +31,10 @@ window.SITE_CONFIG = {
   // di server; calon jamaah langsung diarahkan ke WhatsApp.
   leadEndpoint: "",
 
+  // Data paket terbaru yang diperbarui GitHub Actions dua kali sehari (lewat CDN jsDelivr).
+  // Kosong = hanya memakai data bawaan assets/js/packages.js.
+  packagesDataUrl: "https://cdn.jsdelivr.net/gh/wikidwirizki/ventour-konsultan@main/data/packages.json",
+
   analytics: {
     // Google Analytics 4 Measurement ID, mis. "G-XXXXXXX". Kosong = GA4 tidak dimuat.
     ga4Id: "",
